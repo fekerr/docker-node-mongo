@@ -1,0 +1,15 @@
+version: '2'
+services:
+  app:
+    container_name: docker-node-mongo # container name
+    restart: always # restart always when failed
+    build: . # use the Dockerfile in pwd
+    ports:
+      - '80:3000'
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - '27017:27017'
